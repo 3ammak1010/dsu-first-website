@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ar"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>عرض المنتج</title> 
+  <style>
+        body {
+            background-color: #f5f5dc; /* لون خلفية بني فاتح باستيل */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* عرض الصفحة كاملة */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative; /* لجعل العناصر المطلقة ترتبط بالعنصر الأب */
+            overflow: hidden; /* لمنع ظهور أي محتوى يتجاوز الحواف */
+        }
+        h1, h2 {
+            color: #d2b48c; /* لون بني فاتح باستيل للنص */
+            margin: 0;
+            text-align: center;
+        }
+        .cat-gif {
+            margin-top: 20px;
+            width: 200px; /* حجم متوسط للقطة */
+        }
+        .logo {
+            border-radius: 50%; /* حواف مدورة */
+            width: 150px; /* عرض الشعار */
+            height: 150px; /* ارتفاع الشعار */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل للشعار */
+            margin-bottom: 20px; /* مسافة بين الشعار والنص */
+            overflow: hidden; /* لإخفاء أي جزء من الصورة يتجاوز الحدود */
+        }
+        .logo img {
+            width: 100%; /* عرض الصورة بالكامل */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+        }
+        .loading-bar {
+            margin-top: 20px;
+            width: 200px; /* عرض الشريط */
+            height: 10px; /* ارتفاع الشريط */
+            background: #d2b48c; /* لون الخلفية للشريط */
+            border-radius: 5px; /* زوايا مدورة للشريط */
+            position: relative; /* لتسهيل وضع النقاط */
+            overflow: hidden; /* لإخفاء النقاط خارج الحدود */
+        }
+        .dot {
+            position: absolute;
+            width: 10px; /* حجم النقطة */
+            height: 10px; /* حجم النقطة */
+            background-color: #8b4513; /* لون النقطة بني */
+            border-radius: 50%; /* شكل دائري للنقطة */
+            animation: loading 2s infinite; /* حركة التحميل أبطأ */
+        }
+        @keyframes loading {
+            0% { left: 0; opacity: 1; }
+            20% { opacity: 1; }
+            40% { opacity: 0; }
+            60% { opacity: 0; }
+            100% { left: 200px; opacity: 1; }
+        }
+        /* إضافة خلفية نباتات */
+        .streaker {
+            position: absolute;
+            z-index: -1; /* تحت جميع المحتويات */
+            width: 100px; /* عرض الصورة */
+            height: auto; /* ارتفاع تلقائي */
+            opacity: 0.5; /* شفافية */
+        }
+        /* موضع العناصر في الزوايا العلوية */
+        .streaker.left {
+            top: 10%; 
+            left: 10%; 
+        }
+        .streaker.right {
+            top: 10%; 
+            right: 10%; 
+            transform: scaleX(-1); /* عكس أفقي */
+        }
+    </style> 
+  <script>
+        // الانتقال إلى صفحة المنتجات بعد 15 ثانية
+        setTimeout(() => {
+            window.location.href = 'product.html'; // تأكد من أن هذه هي صفحة المنتجات الخاصة بك
+        }, 15000);
+
+        // إضافة النقاط بالتتابع
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadingBar = document.querySelector('.loading-bar');
+            for (let i = 0; i < 6; i++) { // عدد النقاط
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.style.animationDelay = `${i * 0.33}s`; // تأخير لكل نقطة
+                loadingBar.appendChild(dot);
+            }
+        });
+    </script> 
+ </head> 
+ <body> 
+  <div class="logo"> 
+   <img src="https://i.imgur.com/bQa20vN.jpeg" alt="شعار Dsu Amitoko"> 
+  </div> 
+  <h1>いらっしゃいませ</h1> 
+  <h2>dsu аmitoko です</h2> 
+  <img class="cat-gif" src="https://media2.giphy.com/media/frNQLAftxYuNGGdvok/giphy.gif?cid=6c09b952nn2tot2jvoxrb2qgoexrfqbbs12m0ivvyxgvdiuu&amp;ep=v1_internal_gif_by_id&amp;rid=giphy.gif&amp;ct=s" alt="قطة لطيفة"> 
+  <div class="loading-bar"> <!-- النقاط ستضاف هنا بواسطة JavaScript --> 
+  </div> <!-- إضافة عناصر نباتات streaker --> 
+  <img class="streaker left" src="https://media2.giphy.com/media/fPyYd1bg9dHHvpE05a/giphy.gif?cid=6c09b952prbiw3t7dxuh9dobvedec3ulweujodtxtzs4bs90&amp;ep=v1_internal_gif_by_id&amp;rid=giphy.gif&amp;ct=s" alt="نبات 1"> 
+  <img class="streaker right" src="https://media2.giphy.com/media/fPyYd1bg9dHHvpE05a/giphy.gif?cid=6c09b952prbiw3t7dxuh9dobvedec3ulweujodtxtzs4bs90&amp;ep=v1_internal_gif_by_id&amp;rid=giphy.gif&amp;ct=s" alt="نبات 2"> 
+ 
+</body></html>

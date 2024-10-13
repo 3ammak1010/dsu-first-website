@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ar"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>دمى كروشيه للبيع</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <style>
+        body {
+            background-color: #f5f5dc; /* لون خلفية بني فاتح باستيل */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            position: relative; /* لإمكانية وضع الخلفية في الزاوية */
+        }
+        h1 {
+            color: #8b4513;
+        }
+        .product-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            height: 60vh;
+        }
+        .product {
+            margin: 20px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 220px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 200px;
+            height: 300px; /* نحدد الحجم الثابت هنا */
+            border-radius: 10px;
+            object-fit: cover; /* لضبط الصورة لتعبئة الحاوية */
+        }
+        .price-button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: auto;
+        }
+        .price {
+            color: #d2691e;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .buy-button {
+            padding: 10px 20px;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .buy-button:hover {
+            background-color: #a0522d;
+        }
+        .arrow {
+            position: absolute;
+    top: 45%; /* رفع الأسهم قليلاً */
+            transform: translateY(-50%); /* لتحريك السهم لأعلى نصف ارتفاعه */
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 24px;
+        }
+        .left-arrow { left: 10px; }
+        .right-arrow { right: 10px; }
+        .payment { margin-top: 20px; }
+        .gif-top-left {
+            position: absolute;
+            top: 0; /* محاذاة إلى أعلى الصفحة */
+            left: -20px; /* تحريك الـ GIF لأقصى اليسار */
+            width: 180px; /* حجم الصورة الأكبر */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+        }
+        .gif-top-right {
+            position: absolute;
+            top: 0; /* محاذاة إلى أعلى الصفحة */
+            right: -20px; /* تحريك الـ GIF لأقصى اليمين */
+            width: 180px; /* حجم الصورة الأكبر */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+        }
+    </style> 
+ </head> 
+ <body> 
+  <h1>be my guest</h1> 
+  <img class="gif-top-left" src="https://media2.giphy.com/media/fPyYd1bg9dHHvpE05a/giphy.gif?cid=6c09b9524ihm9ulf246xktsacmtx8sy4uzl2jqw6uo6d86fz&amp;ep=v1_internal_gif_by_id&amp;rid=giphy.gif&amp;ct=s" alt="قطة"> 
+  <img class="gif-top-right" src="https://media4.giphy.com/media/ZeR2vLn6vyat3nwHHL/giphy.gif?cid=6c09b9529kjab3nm4fp6goigibz19d15wmiozpkyfhb1mftj&amp;ep=v1_internal_gif_by_id&amp;rid=giphy.gif&amp;ct=s" alt="قطة"> 
+  <div class="product-container" id="productContainer"> 
+   <script>
+            const products = [
+                { src: "https://i.imgur.com/FuLrtv3.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/wNggCBm.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/MjbUV3M.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/A2rkNNu.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/L5GRA8e.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/BFS5Zn6.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/P1Zu9bh.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/kFvlOiT.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/hHhhhNS.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/iWRvii3.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/GMai4wa.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/8Kj6wZT.jpeg", price: "3 دولارات" },
+                { src: "https://i.imgur.com/pYf29PH.jpeg", price: "3 دولارات" }
+            ];
+
+            products.forEach(product => {
+                document.write(`
+                    <div class="product">
+                        <img src="${product.src}" alt="دمية كروشيه">
+                        <div class="price-button-container">
+                            <div class="price">سعر: ${product.price}</div>
+                            <button class="buy-button"><i class="fas fa-shopping-cart"></i> شراء الآن</button>
+                        </div>
+                    </div>
+                `);
+            });
+        </script> 
+  </div> <button class="arrow left-arrow" onclick="moveLeft()"><i class="fas fa-chevron-left"></i></button> <button class="arrow right-arrow" onclick="moveRight()"><i class="fas fa-chevron-right"></i></button> 
+  <div class="payment"> 
+   <h2>الدفع بالبطاقة البنكية</h2> 
+   <form> <label for="card-number">رقم البطاقة:</label> 
+    <br> 
+    <input type="text" id="card-number" name="card-number" required> 
+    <br> <label for="expiry-date">تاريخ انتهاء الصلاحية:</label> 
+    <br> 
+    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required> 
+    <br> <label for="cvc">CVC:</label> 
+    <br> 
+    <input type="text" id="cvc" name="cvc" required> 
+    <br> 
+    <br> <button type="submit" class="buy-button"><i class="fas fa-credit-card"></i> إتمام الدفع</button> 
+   </form> 
+  </div> 
+  <script>
+        const productContainer = document.getElementById('productContainer');
+        let scrollAmount = 0;
+        const productWidth = 240;
+
+        function moveLeft() {
+            scrollAmount -= productWidth;
+            if (scrollAmount < 0) scrollAmount = productContainer.scrollWidth - productContainer.clientWidth;
+            productContainer.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        function moveRight() {
+            scrollAmount += productWidth;
+            if (scrollAmount >= productContainer.scrollWidth - productContainer.clientWidth) scrollAmount = 0;
+            productContainer.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }
+    </script> 
+ 
+</body></html>
